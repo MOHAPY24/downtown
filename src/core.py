@@ -41,9 +41,16 @@ def build():
                 except FileNotFoundError:
                     print(f"[X] Stylesheet: '{savesite["metadata"]["Stylesheet-file"]}' does not exist or is an invalid path.")
                     exit(i)
-            stylesheet["href"] = savesite["metadata"]["Stylesheet-file"]
+            stylesheet["href"] = f"build/out/{Path(savesite['metadata']['Stylesheet-file']).stem}.css"
         else:
-            new_link = soup.new_tag("link", rel="stylesheet", href=savesite["metadata"]["Stylesheet-file"])
+            with open(f"build/out/{Path(savesite['metadata']['Stylesheet-file']).stem}.css", 'w') as f:
+                try:
+                    with open(savesite["metadata"]["Stylesheet-file"], 'r') as r:
+                        f.write(r.read())
+                except FileNotFoundError:
+                    print(f"[X] Stylesheet: '{savesite["metadata"]["Stylesheet-file"]}' does not exist or is an invalid path.")
+                    exit(i)
+            new_link = soup.new_tag("link", rel="stylesheet", href=f"build/out/{Path(savesite['metadata']['Stylesheet-file']).stem}.css")
             soup.head.append(new_link)
 
         if meta_desc:
@@ -53,13 +60,6 @@ def build():
             new_meta.attrs["name"] = "description"
             new_meta.attrs["content"] = savesite["metadata"]["Description"]
             soup.head.append(new_meta)
-            with open(f"build/out/{Path(savesite['metadata']['Stylesheet-file']).stem}.css", 'w') as f:
-                try:
-                    with open(savesite["metadata"]["Stylesheet-file"], 'r') as r:
-                        f.write(r.read())
-                except FileNotFoundError:
-                    print(f"[X] Stylesheet: '{savesite["metadata"]["Stylesheet-file"]}' does not exist or is an invalid path.")
-                    exit(i)
 
         body.append(BeautifulSoup(markdown.markdown(mark), "html.parser"))
 
