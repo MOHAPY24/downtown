@@ -60,8 +60,10 @@ def build():
             new_meta.attrs["name"] = "description"
             new_meta.attrs["content"] = savesite["metadata"]["Description"]
             soup.head.append(new_meta)
-
-        body.append(BeautifulSoup(markdown.markdown(mark), "html.parser"))
+        try:
+            body.append(BeautifulSoup(markdown.markdown(mark), "html.parser"))
+        except IndexError:
+            print("[X] Looks like the current file to be build is empty, sadly we cannot parse that. Add to the file!")
 
         filen = Path(i).stem
         with open(f"build/out/{filen}.html", 'w') as f:
