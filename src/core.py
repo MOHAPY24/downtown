@@ -1,4 +1,4 @@
-import markdown # pyright: ignore[reportMissingModuleSource]
+import markdown
 from bs4 import BeautifulSoup
 from globals import *
 import sys
@@ -34,6 +34,13 @@ def build():
         stylesheet = soup.find("link", attrs={"rel": "stylesheet"})
 
         if stylesheet:
+            with open(f"build/out/{Path(savesite['metadata']['Stylesheet-file']).stem}.css", 'w') as f:
+                try:
+                    with open(savesite["metadata"]["Stylesheet-file"], 'r') as r:
+                        f.write(r.read())
+                except FileNotFoundError:
+                    print(f"[X] Stylesheet: '{savesite["metadata"]["Stylesheet-file"]}' does not exist or is an invalid path.")
+                    exit(i)
             stylesheet["href"] = savesite["metadata"]["Stylesheet-file"]
         else:
             new_link = soup.new_tag("link", rel="stylesheet", href=savesite["metadata"]["Stylesheet-file"])
@@ -46,6 +53,13 @@ def build():
             new_meta.attrs["name"] = "description"
             new_meta.attrs["content"] = savesite["metadata"]["Description"]
             soup.head.append(new_meta)
+            with open(f"build/out/{Path(savesite['metadata']['Stylesheet-file']).stem}.css", 'w') as f:
+                try:
+                    with open(savesite["metadata"]["Stylesheet-file"], 'r') as r:
+                        f.write(r.read())
+                except FileNotFoundError:
+                    print(f"[X] Stylesheet: '{savesite["metadata"]["Stylesheet-file"]}' does not exist or is an invalid path.")
+                    exit(i)
 
         body.append(BeautifulSoup(markdown.markdown(mark), "html.parser"))
 
