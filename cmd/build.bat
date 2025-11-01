@@ -1,3 +1,3 @@
 @echo off
-python src/core.py
+python src/core.py build
 pause
