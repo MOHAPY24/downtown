@@ -12,7 +12,7 @@ You can install Downtown by cloning the repository and running the setup python 
 ```bash
 git clone https://github.com/MOHAPY24/Downtown.git
 cd Downtown
-python setup.py
+pip install -r requirements.txt
 ```
 
 ## Usage
@@ -20,14 +20,21 @@ python setup.py
 2. Place your Markdown files in the `build/mark` directory.
 3. Optional: Add custom CSS files to the `build/css` directory and JavaScript files to the `build/js` directory.
 4. Optional: Add a README for your site in the `build` directory.
-5. Run the main script to generate your website:
+5. Optional: Edit the template HTML file in the `src/template` directory to change the basic layout of your site.
+6. Run the main script to generate your website:
+For POSIX systems:
 ```bash
-python src/build.py
+bash cmd/build.sh
 ```
-6. The generated HTML files will be available in the `build/out` directory.
+For Windows systems:
+
+```batch
+cmd\build.bat
+```
+7. The generated HTML files will be available in the `build/out` directory.
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
 ## License
-This project is licensed under the BSD-3-Clause License. See the LICENSE file for details.
+This project is licensed under the BSD-3-Clause License. See the [LICENSE](LICENSE) file for details.
