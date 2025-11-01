@@ -1,0 +1,12 @@
+{
+    "metadata" : {
+        "Title" : "Example Title", // Website Title
+        "Description" : "Example Description", // Website Description
+        "README" : "path/to/README", // OPTIONAL: README File
+        "Stylesheet-file" : "/path/to/css/file" // CSS File for styling
+    },
+
+    "Files" : { // Markdown files
+        "Index" : "build/marks/index.md" // NEEDED: Index file
+    }
+}
