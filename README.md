@@ -17,9 +17,10 @@ pip install -r requirements.txt
 ## Usage
 1. Edit the `Sitefile` in the config directory to customize your site settings.
 2. Place your Markdown files in the `build/mark` directory.
-3. Optional: Add a README for your site in the `build` directory.
-4. Optional: Edit the template HTML file in the `src/template` directory to change the basic layout of your site.
-5. Run the main script to generate your website:
+3. Optional: Create additional `.Site` configuration files in the `build/configs` directory for specific pages.
+4. Optional: Add a README for your site in the `build` directory.
+5. Optional: Edit the template HTML file in the `src/template` directory to change the basic layout of your site.
+6. Run the main script to generate your website:
 For POSIX systems:
 ```bash
 bash cmd/build.sh
@@ -29,7 +30,7 @@ For Windows systems:
 ```batch
 cmd\build.bat
 ```
-6. The generated HTML files will be available in the `build/out` directory.
+7. The generated HTML files will be available in the `build/out` directory.
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
