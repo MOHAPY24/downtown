@@ -9,8 +9,8 @@ A Python framework for building websites and web applications from Markdown file
 You can install Downtown by cloning the repository and running the setup python script to install dependencies, project files, and create a virtual environment.:
 
 ```bash
-git clone https://github.com/MOHAPY24/Downtown.git
-cd Downtown
+git clone https://github.com/MOHAPY24/downtown.git
+cd downtown
 pip install -r requirements.txt
 ```
 
