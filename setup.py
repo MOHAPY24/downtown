@@ -10,7 +10,7 @@ setup(
     name="downtown",
     version="0.1.0",
     description="A Python framework for making websites from Markdown and CSS files.",
-    license="GPLv3",
+    license="BSD-3",
     author="MOHAPY24",
     packages=find_packages(),
     install_requires=[],
