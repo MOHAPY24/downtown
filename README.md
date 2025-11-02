@@ -6,7 +6,7 @@ A Python framework for building websites and web applications from Markdown file
 - Easy configuration through a simple `Sitefile` JSONC file.
 
 ## Installation
-You can install Downtown by cloning the repository and running the setup python script to install dependencies, project files, and create a virtual environment.:
+You can install Downtown by cloning the repository, installing dependencies using pip:
 
 ```bash
 git clone https://github.com/MOHAPY24/downtown.git
