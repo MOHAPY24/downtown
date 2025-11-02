@@ -17,8 +17,9 @@ def build():
                 with open(f"build/configs/{i}.Site", 'r') as f:
                     savesite = json.loads(utils.rmcomments(f.read()))
             except FileNotFoundError:
+                print(f"[*] WARNING: Using stock Sitefile configuration for '{sitefile["Files"][i]}', No '{i}.Site' file found...")
                 pass
-        print(f"[*] Making: '{sitefile["Files"][i]}'")
+        print(f"[*] Building: '{sitefile["Files"][i]}'")
         soup = BeautifulSoup(template, "html.parser")
         body = soup.body
         try:

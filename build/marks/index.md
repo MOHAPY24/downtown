@@ -10,7 +10,7 @@ You can create headings, lists, links, and more using Markdown syntax.
 - Customizable templates
 
 ## Getting Started
-To get started, simply create a Markdown file, add it to your Sitefile and if its not an Index file, create a .Site file for that file and run the Downtown build command.
+To get started, simply create a Markdown file, add it to your Sitefile and optionally if its not an Index file, create a .Site file for that file and run the Downtown build command.
 ```
 bash cmd/build.sh
 ```
