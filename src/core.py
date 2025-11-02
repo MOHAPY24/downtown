@@ -21,8 +21,12 @@ def build():
         print(f"[*] Making: '{sitefile["Files"][i]}'")
         soup = BeautifulSoup(template, "html.parser")
         body = soup.body
-        with open(sitefile["Files"][i], 'r') as f:
-            mark = f.read()
+        try:
+            with open(sitefile["Files"][i], 'r') as f:
+                mark = f.read()
+        except:
+            print(f"[X] Err in Sitefile: File '{sitefile["Files"][i]}' does not exist or has an invalid path")
+            exit(1)
 
         soup.title.string = savesite["metadata"]["Title"]
         meta_desc = soup.find("meta", attrs={"name": "description"})
