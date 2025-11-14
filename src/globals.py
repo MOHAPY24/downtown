@@ -5,5 +5,5 @@ with open("config/Sitefile", 'r') as f:
 
 
 
-with open("src/configs/template.html", 'r') as f:
+with open("src/templates/template.html", 'r') as f:
     template = f.read()
