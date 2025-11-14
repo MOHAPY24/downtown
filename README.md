@@ -1,5 +1,5 @@
 # Downtown
-A Python framework for building websites and web applications from Markdown files.
+A Python framework/SSG for building websites and web applications from Markdown files.
 
 ## Features
 - Convert Markdown files to HTML.
