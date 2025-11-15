@@ -59,7 +59,7 @@ def build():
                 new_link = soup.new_tag("script", src=f"{Path(savesite['metadata']['Script-file']).stem}.js")
                 body.append(new_link)
             except KeyError:
-                print(f"[~] Script link does not in exist in the .Site file, skipping.....")
+                print(f"[~] Script link does not in exist in the .Site/Sitefile file, skipping.....")
 
         if stylesheet:
             with open(f"build/out/{Path(savesite['metadata']['Stylesheet-file']).stem}.css", 'w') as f:
