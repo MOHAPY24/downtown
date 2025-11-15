@@ -9,7 +9,6 @@ from pathlib import Path
 
 
 def build():
-
     for i in sitefile["Files"]:
         savesite = sitefile
         if i != "Index":
@@ -32,6 +31,35 @@ def build():
         soup.title.string = savesite["metadata"]["Title"]
         meta_desc = soup.find("meta", attrs={"name": "description"})
         stylesheet = soup.find("link", attrs={"rel": "stylesheet"})
+        script_tags = soup.find_all("script")
+
+        scriptfile = None
+        for script in script_tags:
+            if script.get('src'):
+                scriptfile = script['src']
+                break   # stop at the first valid src
+        if scriptfile:
+            with open(f"build/out/{Path(savesite['metadata']['Script-file']).stem}.js", 'w') as f:
+                try:
+                    with open(savesite["metadata"]["Script-file"], 'r') as r:
+                        f.write(r.read())
+                except FileNotFoundError:
+                    print(f"[X] Script: '{savesite["metadata"]["Script-file"]}' does not exist or is an invalid path.")
+                    exit(1)
+            scriptfile["src"] = f"{Path(savesite['metadata']['Script-file']).stem}.js"
+        else:
+            try:
+                with open(f"build/out/{Path(savesite['metadata']['Script-file']).stem}.js", 'w') as f:
+                    try:
+                        with open(savesite["metadata"]["Script-file"], 'r') as r:
+                            f.write(r.read())
+                    except FileNotFoundError:
+                        print(f"[X] Script: '{savesite["metadata"]["Script-file"]}' does not exist or is an invalid path.")
+                        exit(1)
+                new_link = soup.new_tag("script", src=f"{Path(savesite['metadata']['Script-file']).stem}.js")
+                body.append(new_link)
+            except KeyError:
+                print(f"[~] Script link does not in exist in the .Site file, skipping.....")
 
         if stylesheet:
             with open(f"build/out/{Path(savesite['metadata']['Stylesheet-file']).stem}.css", 'w') as f:
@@ -40,7 +68,7 @@ def build():
                         f.write(r.read())
                 except FileNotFoundError:
                     print(f"[X] Stylesheet: '{savesite["metadata"]["Stylesheet-file"]}' does not exist or is an invalid path.")
-                    exit(i)
+                    exit(1)
             stylesheet["href"] = f"{Path(savesite['metadata']['Stylesheet-file']).stem}.css"
         else:
             with open(f"build/out/{Path(savesite['metadata']['Stylesheet-file']).stem}.css", 'w') as f:
@@ -49,7 +77,7 @@ def build():
                         f.write(r.read())
                 except FileNotFoundError:
                     print(f"[X] Stylesheet: '{savesite["metadata"]["Stylesheet-file"]}' does not exist or is an invalid path.")
-                    exit(i)
+                    exit(1)
             new_link = soup.new_tag("link", rel="stylesheet", href=f"{Path(savesite['metadata']['Stylesheet-file']).stem}.css")
             soup.head.append(new_link)
 
