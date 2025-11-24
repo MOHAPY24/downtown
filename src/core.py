@@ -1,7 +1,7 @@
 import markdown
 from bs4 import BeautifulSoup
 from globals import *
-import sys
+import sys, os
 from pathlib import Path
 
 
@@ -96,6 +96,8 @@ def build():
         filen = Path(i).stem
         with open(f"build/out/{filen}.html", 'w') as f:
             f.write(soup.prettify())
+        print("[*] Running server")
+        os.system("python3 -m http.server 8000")
 
 try:
     mode = sys.argv[1]
