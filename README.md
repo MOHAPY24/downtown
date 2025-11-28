@@ -32,7 +32,7 @@ pip install -r requirements.txt
 3. Optional: Create additional `.Site` configuration files in the `build/configs` directory for specific pages.
 4. Optional: Add a README for your site in the `build` directory.
 5. Optional: Edit the template HTML file in the `src/template` directory to change the basic layout of your site.
-6. Optional: Add any custom Javascript or CSS files in the `src/js` and `src/css` directories respectively and add them to your Sitefile/.Site file/s.
+6. Optional: Add any custom Javascript or CSS files in the build directory respectively and add them to your Sitefile/.Site file/s.
 7. Run the main script to generate your website:
 For POSIX systems:
 ```bash
