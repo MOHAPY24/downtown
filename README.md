@@ -21,7 +21,7 @@ A Static Site Generator (SSG) is a tool that generates a full static HTML websit
 You can install Downtown by cloning the repository, installing dependencies using pip:
 
 ```bash
-git clone https://github.com/MOHAPY24/downtown.git
+git clone https://github.com/sirruserror/downtown.git
 cd downtown
 pip install -r requirements.txt
 ```
